@@ -8,7 +8,7 @@ today = new Date();
 
 const client = new pg.Client({                //Conexão com o Banco sysfinanctrl
     host: 'localhost',
-    database: 'FinanCtrlSys',
+    database: 'sysfinanctrl',
     user: 'cpoeta',
     password: '@58415433P',
     port: 5432,
