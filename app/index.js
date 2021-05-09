@@ -31,7 +31,8 @@ fs.createReadStream(__dirname + '/src/TBBENEFICIARIOS.csv').pipe(parse({delimite
     for (var i = 1;i < csvData.length;i++) {
         pSql = `INSERT INTO tbBeneficiarios (nome, createdAt, updatedAt) VALUES `
         pSql = `${pSql} ('${csvData[i][1].trim()}'`
-        pSql = `${pSql}, '${dt(today)}', '${dt(today)}')` 
+        pSql = `${pSql}, '${dt(today)}', '${dt(today)}')`
+    console.log(pSql);
         client.query(pSql, function (err, rows, fields) {
             if (!err) {
                 ++nl
