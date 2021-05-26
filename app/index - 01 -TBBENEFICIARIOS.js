@@ -7,7 +7,7 @@ today = new Date();
 
 const client = new pg.Client({                //Conexão com o Banco sysfinanctrl
     host: 'localhost',
-    database: 'sysfinanctrl',
+    database: 'PersonalFinance',
     user: 'cpoeta',
     password: '@58415433P',
     port: 5432,
@@ -29,10 +29,9 @@ fs.createReadStream(__dirname + '/src/TBBENEFICIARIOS.csv').pipe(parse({delimite
     var nl = 0
     for (var i = 1;i < csvData.length;i++) {
 
-        pSql = `INSERT INTO tbBeneficiarios (nome, created, updated) VALUES `
+        pSql = `INSERT INTO tbBeneficiarios (nome, created, updated, active, useradm_id) VALUES `
         pSql = `${pSql} ('${csvData[i][1].trim()}'`
-        pSql = `${pSql}, '${dt(today)}', '${dt(today)}')`
-
+        pSql = `${pSql}, '${dt(today)}', '${dt(today)}', True, 1)`
 
         client.query(pSql, function (err, rows, fields) {
             if (!err) {
